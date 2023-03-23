@@ -6,7 +6,7 @@
 
 #define CONFIG_DIR_PREFIX "/etc/rfid/"
 
-#ifndef CONFIG_PATH 
+#ifndef CONFIG_PATH
 # define CONFIG_PATH CONFIG_DIR_PREFIX "rfid.yml"
 #endif /* LOGFILE_PATH */
 
@@ -25,7 +25,7 @@ struct config_struct_def
 typedef struct config_struct_def * config_t;
 
 config_t init_config();
-ssize_t delete_config(config_t conf);
+void delete_config(config_t conf);
 
 void set_stream(config_t conf, char *stream_path);
 void standard_config(config_t conf);

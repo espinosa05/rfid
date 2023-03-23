@@ -22,7 +22,7 @@ void set_stream(config_t conf, char *stream_path)
 	ASSERT(conf->istream_fd != -1);
 }
 
-ssize_t delete_config(config_t conf)
+void delete_config(config_t conf)
 {
 	free(conf);
 }
@@ -41,5 +41,6 @@ void standard_config(config_t conf)
 		ASSERT(conf->log_file_fd != -1);
 	}
 
-	conf->istream_fd = STDIN_FILENO;
+
+    conf->istream_fd = STDIN_FILENO;
 }

@@ -1,6 +1,8 @@
 
 #include <utils.h>
+#include <signal.h>
 
+#define NULL_TERM_SIZ 1
 void write_log(config_t conf, char * restrict str)
 {
 	char *msg_buf = malloc(strlen(str) + NULL_TERM_SIZ + 1);

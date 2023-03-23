@@ -7,7 +7,7 @@
 #define ASSERT(cond)							\
 	if ((cond))							\
 	{								\
-		fprintf(stderr, "assertion failed (%s)", #cond;		\
+		fprintf(stderr, "assertion failed (%s)", #cond);	\
 		if (errno != 0)						\
 		{							\
 			fprintf(stderr, ": %s", strerror(errno));	\

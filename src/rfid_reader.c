@@ -36,16 +36,17 @@ void read_rfid(config_t conf)
 
 	ASSERT(rfid_uid_buf);
 
-	ssize_t uid_length = read(conf->istream_fd, conf->rfid_uid_length + 1);
+	ssize_t uid_length = read(conf->istream_fd, rfid_uid_buf,
+            conf->rfid_uid_length + 1);
 
 	if (uid_length != 0)
 	{
-		fprintf(conf->log_file, "invalid rfid string detected: 0x%10x\n",
+		dprintf(conf->log_file_fd, "invalid rfid string detected: 0x%10x\n",
 				rfid_uid_buf);
 
 		free(rfid_uid_buf);
 		return;
-	}	
+    }
 
 	free(rfid_uid_buf);
 }

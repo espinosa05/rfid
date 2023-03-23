@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
+#include <signal.h>
 
 #include <utils.h>
 
@@ -11,23 +12,27 @@
 
 #define FIXME(str) printf("FIXME:\t%s\n", str);
 
-int main(int argc, char **argv)
+#ifndef STREAM_PATH
+#define STREAM_PATH "/dev/stdin"
+#endif /* STREAM_PATH */
+
+int main(void)
 {
 	/* daemonize thread */
-	ASSERT(daemon(ROOT_DIR, NO_CLOSE) == 0);
+	//ASSERT(daemon(ROOT_DIR, NO_CLOSE) == 0);
 
 	config_t conf = init_config();
-	write_log(conf, "daemon running on")
-	
-	if (argc < 2)
-	{
-		write_log(conf, "continuing with standard configuration");
+	//write_log(conf, "daemon running on");
 
-		FIXME("parse config file hint: set_stream()");
-		standard_config(conf);
-	}
+	write_log(conf, "continuing with standard configuration");
 
-	
+	standard_config(conf);
+
+    for(;;)
+    {
+        read_rfid(conf);
+    }
+
 
 	return EXIT_SUCCESS;
 }
