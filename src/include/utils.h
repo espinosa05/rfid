@@ -4,14 +4,16 @@
 #include <errno.h>
 #include <stdlib.h>
 
-#define ASSERT(cond)		\
-	if ((cond))		\
-	{			\
-		if (errno != 0)	\
-		{		\
-			fprintf(stderr, ": %s", strerror(errno));\
-		}		\
-		exit(-1);	\
+#define ASSERT(cond)							\
+	if ((cond))							\
+	{								\
+		fprintf(stderr, "assertion failed (%s)", #cond;		\
+		if (errno != 0)						\
+		{							\
+			fprintf(stderr, ": %s", strerror(errno));	\
+		}							\
+		fprintf(stderr, "\n");					\
+		abort();						\
 	}			
 
 #include "config.h"
